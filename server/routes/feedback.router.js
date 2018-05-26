@@ -29,4 +29,17 @@ router.get('/', (req, res) => {
         });
 });
 
+router.delete('/:id', (req, res) => {
+    const feedback = req.params.id;
+    console.log(feedback);
+    pool.query(`DELETE FROM "feedback" WHERE "id" = $1;`, [feedback])
+        .then((results) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('DELETE feedback error', error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;

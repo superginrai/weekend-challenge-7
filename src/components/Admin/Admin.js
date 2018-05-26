@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Navlink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import FeedbackItem from '../FeedBackItem/FeedbackItem';
 
 const mapReduxStateToProps = (reduxState) => (
     { reduxState }
@@ -12,9 +13,9 @@ class Admin extends Component {
 
     componentDidMount() {
         this.getFeedbackFromServer();
-      }
+    }
 
-      getFeedbackFromServer = () => {
+    getFeedbackFromServer = () => {
         axios.get('/api/feedback').then((response) => {
             const action = { type: 'LIST_FEEDBACK', payload: response.data };
             this.props.dispatch(action);
@@ -27,25 +28,21 @@ class Admin extends Component {
     render() {
         return (
             <div className="App">
-              <table>
-          <thead>
-            <tr>
-              <th>Feeling</th>
-              <th>Comprehension</th>
-              <th>Support</th>
-              <th>Comments</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.reduxState.allFeedback.map((feedback) => <tr key={feedback.id}>
-              <td>{feedback.feeling}</td>
-              <td>{feedback.understanding}</td>
-              <td>{feedback.support}</td>
-              <td>{feedback.comments}</td>
-            </tr>)}
-          </tbody>
-        </table>
-        
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feeling</th>
+                            <th>Comprehension</th>
+                            <th>Support</th>
+                            <th>Comments</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.reduxState.allFeedback.map((feedback) => <FeedbackItem key={feedback.id} feedback={feedback} getFeedbackFromServer={this.getFeedbackFromServer}/>)}
+                    </tbody>
+                </table>
+
             </div>
 
         );
