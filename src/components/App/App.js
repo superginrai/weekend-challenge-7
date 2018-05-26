@@ -8,6 +8,7 @@ import Feels from '../Feels/Feels';
 import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import FeedbackComplete from '../FeedbackComplete/FeedbackComplete';
+import Admin from '../Admin/Admin';
 
 const mapReduxStateToProps = (reduxState) => (
   { reduxState }
@@ -28,6 +29,7 @@ class App extends Component {
           <Route exact path='/support' component={Support} />
           <Route exact path='/comments' component={Comments} />
           <Route exact path='/feedbackComplete' component={FeedbackComplete} />
+          <Route exact path='/admin' component={Admin} />
         </div>
       </Router>
     );

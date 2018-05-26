@@ -16,5 +16,17 @@ router.post('/', (req, res) => {
         });
 });
 
+router.get('/', (req, res) => {
+    console.log('feedback get');
+    pool.query(`SELECT * FROM "feedback"
+    ORDER BY "feedback"."id" DESC;`)
+        .then((results) => {
+            res.send(results.rows);
+        })
+        .catch((error) => {
+            console.log('SQL GET error', error);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;
