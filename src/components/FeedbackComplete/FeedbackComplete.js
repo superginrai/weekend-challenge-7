@@ -20,6 +20,7 @@ class FeedbackComplete extends Component {
             this.props.dispatch({ type: 'RESET' });
             console.log('ssuucess');
         }).catch((error) => {
+            this.props.dispatch({ type: 'RESET' });
             alert('problemssssss');
         });
     }

@@ -32,7 +32,7 @@ class Understand extends Component {
         return (
 
             <div >
-                <h4><i>You know tha stuffs??</i></h4>
+                <h4><i>You well do you understand today's content?</i></h4>
                 <div>
                     <label>
                         <input type="radio" value="1" checked={this.state.know === '1'} onChange={this.handleKnowChange} />
@@ -55,6 +55,7 @@ class Understand extends Component {
                         5
           </label>
                 </div>
+                <br />
                 <Link to="/support" onClick={this.sendReduxKnow}>Next</Link>
             </div>
 

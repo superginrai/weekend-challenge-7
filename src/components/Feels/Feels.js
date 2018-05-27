@@ -32,11 +32,11 @@ class Feels extends Component {
         return (
 
             <div >
-                <h4><i>How the feels???</i></h4>
-                <div>
+                <h4><i>How are you feeling today?</i></h4>
+                <div className="Radio">
                     <label>
                         <input type="radio" value="1" checked={this.state.feel === '1'} onChange={this.handleFeelChange} />
-                        1
+                    1
           </label>
                     <label>
                         <input type="radio" value="2" checked={this.state.feel === '2'} onChange={this.handleFeelChange} />
@@ -55,6 +55,7 @@ class Feels extends Component {
                         5
           </label>
                 </div>
+                <br />
                 <Link to="/understand" onClick={this.sendReduxFeels}>Next</Link>
             </div>
 

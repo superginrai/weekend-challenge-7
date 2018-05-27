@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import { BrowserRouter as Router, Route, Navlink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Navlink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Understand from './Understand/Understand';
 import Feels from '../Feels/Feels';
@@ -9,6 +9,7 @@ import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import FeedbackComplete from '../FeedbackComplete/FeedbackComplete';
 import Admin from '../Admin/Admin';
+import FeedbackStart from '../FeedbackStart/FeedbackStart';
 
 const mapReduxStateToProps = (reduxState) => (
   { reduxState }
@@ -24,6 +25,7 @@ class App extends Component {
             <h4><i>Last reminder of every day!!</i></h4>
           </header>
           <br />
+          <Route exact path='/' component={FeedbackStart} />
           <Route exact path='/feels' component={Feels} />
           <Route exact path='/understand' component={Understand} />
           <Route exact path='/support' component={Support} />

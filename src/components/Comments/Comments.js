@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Navlink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { TextField, Input }from '@material-ui/core';
 
 class Comments extends Component {
     constructor(props) {
@@ -32,10 +33,13 @@ class Comments extends Component {
     render() {
         return (
             <div >
-                <h4><i>U leave commmeentz???</i></h4>
+                <h4><i>Leave a comment?</i></h4>
                 <form>
-                    <input onChange={this.handleCommentsChange} value={this.state.comment} name="comment" placeholder="Comments" />
+                    <TextField onChange={this.handleCommentsChange}>
+                        <Input value={this.state.comment} multiline="true" name="comment" placeholder="Comments" />
+                    </TextField>
                 </form>
+                <br />
                 <Link to="/feedbackComplete" onClick={this.sendReduxComments}>Submit Feedback</Link>
             </div>
 

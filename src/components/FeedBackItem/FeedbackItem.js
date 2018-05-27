@@ -9,7 +9,7 @@ class FeedbackItem extends Component {
 
     deleteFeedback = () => {
         console.log(this.props.feedback.id);
-        if (window.confirm('Are you sure you want to delete thie feedback forever (forever...forever...)?')) {
+        if (window.confirm('Are you sure you want to delete this feedback forever (forever...forever...)?')) {
             axios.delete(`/api/feedback/${this.props.feedback.id}`, this.props.feedback.id).then((response) => {
                 this.props.getFeedbackFromServer();
             }).catch((error) => {
