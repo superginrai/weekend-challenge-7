@@ -3,6 +3,9 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Navlink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import Button from '@material-ui/core/Button';
+import Forward from '@material-ui/icons/Forward';
 
 class Feels extends Component {
     constructor(props) {
@@ -26,6 +29,7 @@ class Feels extends Component {
             payload: this.state.feel,
         };
         this.props.dispatch(action);
+        this.props.history.push('/understand');
     };
 
     render() {
@@ -36,7 +40,7 @@ class Feels extends Component {
                 <div className="Radio">
                     <label>
                         <input type="radio" value="1" checked={this.state.feel === '1'} onChange={this.handleFeelChange} />
-                    1
+                        1
           </label>
                     <label>
                         <input type="radio" value="2" checked={this.state.feel === '2'} onChange={this.handleFeelChange} />
@@ -56,7 +60,7 @@ class Feels extends Component {
           </label>
                 </div>
                 <br />
-                <Link to="/understand" onClick={this.sendReduxFeels}>Next</Link>
+                <Button onClick={this.sendReduxFeels} variant="raised" color="primary">Next<Forward /></Button>
             </div>
 
         );

@@ -3,6 +3,8 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Navlink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Forward from '@material-ui/icons/Forward';
 
 class Support extends Component {
     constructor(props) {
@@ -25,6 +27,7 @@ class Support extends Component {
             payload: this.state.support,
         };
         this.props.dispatch(action);
+        this.props.history.push('/comments');
     };
 
     render() {
@@ -55,7 +58,7 @@ class Support extends Component {
           </label>
                 </div>
                 <br />
-                <Link to="/comments" onClick={this.sendReduxSupport}>Next</Link>
+                <Button onClick={this.sendReduxSupport} variant="raised" color="primary">Next<Forward /></Button>
             </div>
 
         );

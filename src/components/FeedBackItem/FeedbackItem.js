@@ -3,6 +3,20 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Navlink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import Button from '@material-ui/core/Button';
+import Delete from '@material-ui/icons/Delete';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+    deleteIcon: {
+      marginLeft: theme.spacing.unit,
+    },
+  });
 
 
 class FeedbackItem extends Component {
@@ -21,16 +35,23 @@ class FeedbackItem extends Component {
     }
 
     render() {
+        const { classes } = this.props
         return (
             <tr key={this.props.feedback.id}>
                 <td>{this.props.feedback.feeling}</td>
                 <td>{this.props.feedback.understanding}</td>
                 <td>{this.props.feedback.support}</td>
                 <td>{this.props.feedback.comments}</td>
-                <td><button onClick={this.deleteFeedback}>Delete</button></td>
+                <td><Button className={classes.button} onClick={this.deleteFeedback} variant="raised" color="secondary">
+                    Delete
+        <Delete className={classes.deleteIcon} />
+                </Button></td>
             </tr>
         );
     }
 }
-
-export default connect()(FeedbackItem);
+FeedbackItem.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+export default withStyles(styles) (FeedbackItem);

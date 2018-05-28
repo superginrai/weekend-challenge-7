@@ -3,6 +3,8 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Navlink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Forward from '@material-ui/icons/Forward';
 
 class Understand extends Component {
     constructor(props) {
@@ -26,13 +28,14 @@ class Understand extends Component {
             payload: this.state.know,
         };
         this.props.dispatch(action);
+        this.props.history.push('/support');
     };
 
     render() {
         return (
 
             <div >
-                <h4><i>You well do you understand today's content?</i></h4>
+                <h4><i>How well do you understand today's content?</i></h4>
                 <div>
                     <label>
                         <input type="radio" value="1" checked={this.state.know === '1'} onChange={this.handleKnowChange} />
@@ -56,7 +59,7 @@ class Understand extends Component {
           </label>
                 </div>
                 <br />
-                <Link to="/support" onClick={this.sendReduxKnow}>Next</Link>
+                <Button onClick={this.sendReduxKnow} variant="raised" color="primary">Next<Forward /></Button>
             </div>
 
         );

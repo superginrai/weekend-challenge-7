@@ -3,7 +3,9 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Navlink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { TextField, Input }from '@material-ui/core';
+import { TextField, Input } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Forward from '@material-ui/icons/Forward';
 
 class Comments extends Component {
     constructor(props) {
@@ -27,7 +29,7 @@ class Comments extends Component {
             payload: this.state.comment,
         };
         this.props.dispatch(action);
-
+        this.props.history.push('/feedbackComplete');
     };
 
     render() {
@@ -40,7 +42,7 @@ class Comments extends Component {
                     </TextField>
                 </form>
                 <br />
-                <Link to="/feedbackComplete" onClick={this.sendReduxComments}>Submit Feedback</Link>
+                <Button onClick={this.sendReduxComments} variant="raised" color="primary">Next<Forward /></Button>
             </div>
 
         );
